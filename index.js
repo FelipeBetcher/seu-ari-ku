@@ -50,6 +50,74 @@ bot.on('guildMemberAdd', member => {
     member.send("Para ser aprovado no servidor, basta enviar uma mensagem para <@412582853834965003>, <@356977176635244555> ou <@319256311298785290> falando seu nome verdadeiro");
 });
 
+bot.on('message', async message => {
+    var args = message.content.substring(prefixo.length).split(" ");
+    const lider = message.author.id === "412582853834965003"
+
+        if(message.content.startsWith(prefixo + "sa 1")){
+        if(lider){
+        const lama = message.content.split(" ").join(" ").slice(7);
+        bot.user.setActivity(lama, { type: 'PLAYING' })
+        message.channel.send(new Discord.RichEmbed()
+        .setColor(0x48d11f)
+        .setAuthor("2!sa", message.author.avatarURL)
+        .setTitle("Atividade alterada para: Jogando " + lama)
+        .setFooter(message.author.username + " meu líder"))
+        }
+        if(!lider){
+            message.channel.send(new Discord.RichEmbed()
+            .setColor(0xcc2020)
+            .setAuthor("2!sa", message.author.avatarURL)
+            .setTitle("Você não tem permissão para este comando")
+            .setFooter(message.author.username + " bobinho"))
+        }}
+
+        if(message.content.startsWith(prefixo + "sa 2")){
+        if(lider){
+        const lama = message.content.split(" ").join(" ").slice(7);
+        bot.user.setActivity(lama, { type: 'LISTENING' })
+        message.channel.send(new Discord.RichEmbed()
+        .setColor(0x48d11f)
+        .setAuthor("2!sa", message.author.avatarURL)
+        .setTitle("Atividade alterada para: Ouvindo " + lama)
+        .setFooter(message.author.username + " meu líder"))
+        }
+        if(!lider){
+            message.channel.send(new Discord.RichEmbed()
+            .setColor(0xcc2020)
+            .setAuthor("2!sa", message.author.avatarURL)
+            .setTitle("Você não tem permissão para este comando")
+            .setFooter(message.author.username + " bobinho"))
+        }}
+
+        if(message.content.startsWith(prefixo + "sa 3")){
+        if(lider){
+        const lama = message.content.split(" ").join(" ").slice(7);
+        bot.user.setActivity(lama, { type: 'WATCHING' })
+        message.channel.send(new Discord.RichEmbed()
+        .setColor(0x48d11f)
+        .setAuthor("2!sa", message.author.avatarURL)
+        .setTitle("Atividade alterada para: Assistindo " + lama)
+        .setFooter(message.author.username + " meu líder"))
+        }
+        if(!lider){
+            message.channel.send(new Discord.RichEmbed()
+            .setColor(0xcc2020)
+            .setAuthor("2!sa", message.author.avatarURL)
+            .setTitle("Você não tem permissão para este comando")
+            .setFooter(message.author.username + " bobinho"))
+        }}
+
+        if(message.content.startsWith("eu sou gay?")){
+            if (lider) { message.channel.send("Não")}
+            if (!lider) { message.channel.send("Sim")}}
+
+/*PLAYING
+STREAMING
+LISTENING
+WATCHING*/
+})
+
 bot.on("message", function(message) {
     if (message.author.equals(bot.user)) return;
 
@@ -153,8 +221,6 @@ bot.on("message", function(message) {
             var server = servers[message.guild.id];
             if (message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
             break;
-        default:
-            message.reply("Comando inválido");
     } 
 });
 
