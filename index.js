@@ -51,6 +51,7 @@ bot.on('guildMemberAdd', member => {
 });
 
 bot.on('message', async message => {
+    const prefixo = "$"
     var args = message.content.substring(prefixo.length).split(" ");
     const lider = message.author.id === "412582853834965003"
 
